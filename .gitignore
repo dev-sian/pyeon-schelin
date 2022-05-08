@@ -1,0 +1,12 @@
+.gradle
+build/
+
+.idea
+*.iws
+*.ipr
+out/
+!**/src/main/**/build/
+!**/src/test/**/build/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
