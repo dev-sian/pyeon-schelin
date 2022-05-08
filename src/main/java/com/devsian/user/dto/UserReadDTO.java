@@ -11,11 +11,11 @@ import lombok.ToString;
 public class UserReadDTO {
 	String userId;
 	String name;
-	String email;
+	Integer tier;
 
 	public UserReadDTO(User user) {
 		userId = user.getUserId();
 		name = user.getName();
-		email = user.getEmail();
+		tier = user.getTier();
 	}
 }
