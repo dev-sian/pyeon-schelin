@@ -1,3 +1,6 @@
+### select all
+GET http://localhost:8080/v1.0/users
+
 ### user create
 POST http://localhost:8080/v1.0/users
 Content-Type: application/json
