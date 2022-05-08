@@ -18,17 +18,14 @@ public class UserCreateDTO {
 	String name;
 
 	@NotBlank
-	String email;
-
-	@NotBlank
 	String password;
 
 	public User toUser() {
 		var user = new User();
 		user.setUserId(userId);
 		user.setName(name);
-		user.setEmail(email);
 		user.setPassword(password);
+		user.setTier(0);
 
 		return user;
 	}

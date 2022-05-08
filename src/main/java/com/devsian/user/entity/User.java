@@ -11,6 +11,6 @@ public class User {
 	String id;
 	String userId;
 	String name;
-	String email;
 	String password;
+	Integer tier;
 }
