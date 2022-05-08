@@ -11,7 +11,7 @@ import java.util.ArrayList;
 @Getter
 @Setter
 @ToString
-public class Post {
+public abstract class Post {
     Integer id;
     String title;
     String content;
