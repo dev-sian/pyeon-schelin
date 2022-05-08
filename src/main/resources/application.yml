@@ -4,7 +4,7 @@ spring:
     active: local
   config:
     import:
-      - "classpath:config/db.yaml"
+      - "classpath:config/db.yaml" # https://github.com/dev-sian/pyeon-schelin/pull/10 참고
 
 --- ## local
 spring:
