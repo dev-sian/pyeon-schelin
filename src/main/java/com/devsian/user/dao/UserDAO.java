@@ -2,18 +2,15 @@ package com.devsian.user.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import com.devsian.user.entity.User;
-import com.devsian.user.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 
-@Service
-@RequiredArgsConstructor
-public class UserDAO {
-	private final UserRepository userRepository;
+@Mapper
+public interface UserDAO {
 
-	public List<User> selectAll() {
-		return userRepository.selectAll();
-	}
+	@Select("SELECT * FROM user")
+	List<User> selectAll();
+
 }
