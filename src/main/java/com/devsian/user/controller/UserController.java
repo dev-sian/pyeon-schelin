@@ -1,9 +1,12 @@
 package com.devsian.user.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +22,13 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class UserController {
 	private final UserBO userBO;
+
+	@GetMapping("/v1.0/users")
+	public ResponseEntity<List<UserReadDTO>> getUsers() {
+		var userReadDTOList = userBO.selectAll();
+		return ResponseEntity.ok(userReadDTOList);
+	}
+
 
 	@PostMapping("/v1.0/users")
 	public ResponseEntity<UserReadDTO> createUser(@Valid @RequestBody UserCreateDTO userCreateDTO) {
