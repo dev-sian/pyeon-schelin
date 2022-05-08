@@ -1,0 +1,10 @@
+### user create
+POST http://localhost:8080/v1.0/users
+Content-Type: application/json
+
+{
+  "userId": "user1",
+  "name": "김영빈",
+  "email": "ybkim@devsian.com",
+  "password": "1234"
+}
