@@ -2,6 +2,7 @@ package com.devsian.post.entity;
 
 import com.devsian.user.entity.User;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -16,7 +17,6 @@ public abstract class Post {
     String title;
     String content;
     Integer boardId;
-    ArrayList<String> images;
     User writer;
     Integer views;
     ZonedDateTime createdAt;

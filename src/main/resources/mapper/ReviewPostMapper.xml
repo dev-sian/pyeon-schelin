@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devsian.post.dao.ReviewPostDAO">
+    <resultMap id="reviewPostsResultMap" type="com.devsian.post.entity.ReviewPost">
+        <id property="id" column = "id" />
+        <result property="productName" column ="productName" />
+        <result property="views" column="views" />
+        <result property="rating" column="rating" />
+        <association property="writer" javaType="com.devsian.user.entity.User">
+            <result property="name" column="nickname"/>
+        </association>
+    </resultMap>
+
+
+    <select id="selectAll" resultMap="reviewPostsResultMap">
+        select p.id, ri.productName, p.views, ri.rating, u.nickname from post p inner join reviewInfo ri on p.id = ri.postId inner join user u on p.writerId = u.id where p.boardId = 2 order by p.id
+    </select>
+
+</mapper>
