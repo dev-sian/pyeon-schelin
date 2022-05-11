@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devsian.comment.dao.CommentDAO">
+    <resultMap id="commentResultMap" type="com.devsian.comment.entity.Comment">
+        <id property="id" column = "id" />
+        <result property="content" column ="content" />
+        <result property="createdAt" column="createdAt" />
+        <association property="commentWriter" javaType="com.devsian.user.entity.User">
+            <result property="userId" column="userId" />
+            <result property="tier" column="tier" />
+            <result property="name" column="nickname"/>
+        </association>
+    </resultMap>
+
+
+    <select id="selectAll" resultMap="commentResultMap">
+        select c.id, c.content, u.nickname, c.createdAt, u.userId, u.tier from comment c inner join user u on c.writerId = u.id where postId = ${postId} limit 10 offset ${offset}
+    </select>
+
+</mapper>
