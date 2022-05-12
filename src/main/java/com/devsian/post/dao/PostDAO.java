@@ -8,6 +8,6 @@ import java.util.List;
 
 @Mapper
 public interface PostDAO {
-    @Select("SELECT * FROM post")
+    @Select("SELECT * FROM post WHERE boardId=#{boardId}")
     List<Post> selectAllPosts(Integer boardId);
 }
