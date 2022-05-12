@@ -7,5 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface CommentDAO {
+    // C
+    void insert(Comment comment);
+    // R
     List<Comment> selectAll(int postId, int offset);
 }

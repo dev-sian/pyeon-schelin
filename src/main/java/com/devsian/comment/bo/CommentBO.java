@@ -2,6 +2,7 @@ package com.devsian.comment.bo;
 
 import com.devsian.comment.converter.CommentConverter;
 import com.devsian.comment.dao.CommentDAO;
+import com.devsian.comment.dto.CommentCreateDTO;
 import com.devsian.comment.dto.CommentReadDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,11 @@ public class CommentBO {
         return comments.stream()
                 .map(CommentConverter::of)
                 .collect(Collectors.toList());
+    }
+
+    public void create(CommentCreateDTO commentCreateDTO) {
+        // converter
+        var comment = CommentConverter.of(commentCreateDTO);
+        commentDAO.insert(comment);
     }
 }

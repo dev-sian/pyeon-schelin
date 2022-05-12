@@ -8,8 +8,11 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Comment {
     Integer id;
+    Integer postId;
     User commentWriter;
     String content;
     ZonedDateTime createdAt;

@@ -1,14 +1,13 @@
 package com.devsian.comment.controller;
 
 import com.devsian.comment.bo.CommentBO;
+import com.devsian.comment.dto.CommentCreateDTO;
 import com.devsian.comment.dto.CommentReadDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -21,5 +20,11 @@ public class CommentController {
         // offset : queryString (@RequestParam), postId : pathParameter (@PathVariable)
         var commentReadDTO = commentBO.getAll(postId, offset);
         return ResponseEntity.ok(commentReadDTO);
+    }
+
+    @PostMapping("/v1.0/comment")
+    public ResponseEntity<String> writeComment(@RequestBody CommentCreateDTO commentCreateDTO) {
+        commentBO.create(commentCreateDTO);
+        return ResponseEntity.ok("success");
     }
 }

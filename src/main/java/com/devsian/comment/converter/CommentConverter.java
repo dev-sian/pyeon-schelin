@@ -1,8 +1,10 @@
 package com.devsian.comment.converter;
 
 
+import com.devsian.comment.dto.CommentCreateDTO;
 import com.devsian.comment.dto.CommentReadDTO;
 import com.devsian.comment.entity.Comment;
+import com.devsian.user.entity.User;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +19,14 @@ public class CommentConverter {
                 .content(comment.getContent())
                 .nickname(comment.getCommentWriter().getName())
                 .createdAt(comment.getCreatedAt())
+                .build();
+    }
+
+    public static Comment of(CommentCreateDTO commentCreateDTO) {
+        return Comment.builder()
+                .postId(commentCreateDTO.getPostId())
+                .commentWriter(new User(commentCreateDTO.getUserId()))
+                .content(commentCreateDTO.getContent())
                 .build();
     }
 }
