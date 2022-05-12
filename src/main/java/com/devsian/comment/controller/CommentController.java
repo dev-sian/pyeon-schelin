@@ -3,6 +3,7 @@ package com.devsian.comment.controller;
 import com.devsian.comment.bo.CommentBO;
 import com.devsian.comment.dto.CommentCreateDTO;
 import com.devsian.comment.dto.CommentReadDTO;
+import com.devsian.comment.dto.CommentUpdateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,12 @@ public class CommentController {
     @PostMapping("/v1.0/comment")
     public ResponseEntity<String> writeComment(@RequestBody CommentCreateDTO commentCreateDTO) {
         commentBO.create(commentCreateDTO);
+        return ResponseEntity.ok("success");
+    }
+
+    @PatchMapping("/v1.0/comment/{commentId}")
+    public ResponseEntity<String> updateComment(@PathVariable Integer commentId, @RequestBody CommentUpdateDTO commentUpdateDTO) {
+        commentBO.update(commentId, commentUpdateDTO);
         return ResponseEntity.ok("success");
     }
 }

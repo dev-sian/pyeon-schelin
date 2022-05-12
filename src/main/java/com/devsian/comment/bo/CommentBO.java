@@ -4,6 +4,7 @@ import com.devsian.comment.converter.CommentConverter;
 import com.devsian.comment.dao.CommentDAO;
 import com.devsian.comment.dto.CommentCreateDTO;
 import com.devsian.comment.dto.CommentReadDTO;
+import com.devsian.comment.dto.CommentUpdateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,13 @@ public class CommentBO {
         // converter
         var comment = CommentConverter.of(commentCreateDTO);
         commentDAO.insert(comment);
+    }
+
+    public void update(Integer commentId, CommentUpdateDTO commentUpdateDTO) {
+        /*
+           ToDo : userId 검증 단계. --> 해당 user가 comment를 작성했는지 확인.
+         */
+        var comment = CommentConverter.of(commentId, commentUpdateDTO);
+        commentDAO.update(comment);
     }
 }
