@@ -1,7 +1,7 @@
 package com.devsian.post;
 
 public enum PostType {
-    RIEWVIEW_POST("REVIEW_POST"), GENERAL_POST("GENERAL_POST");
+    REVIEW_POST("REVIEW_POST"), GENERAL_POST("GENERAL_POST");
 
     private final String value;
 

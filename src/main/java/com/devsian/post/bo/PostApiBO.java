@@ -30,6 +30,9 @@ public class PostApiBO {
             case GENERAL_POST:
                 postBO = new GeneralPostBO(postDAO);
                 break;
+            case REVIEW_POST:
+                postBO = new ReveiwPostBO(postDAO);
+                break;
             default:
                 log.error("없는 post type");
                 break;
