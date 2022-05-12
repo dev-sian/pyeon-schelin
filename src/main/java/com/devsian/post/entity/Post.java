@@ -1,7 +1,9 @@
 package com.devsian.post.entity;
 
 import com.devsian.post.PostType;
+import com.devsian.user.dto.UserReadDTO;
 import com.devsian.user.entity.User;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,15 +13,13 @@ import java.util.ArrayList;
 
 @Getter
 @Setter
-@ToString
-public abstract class Post {
+public class Post {
     Integer id;
     String title;
     String content;
     Integer boardId;
     PostType postType;
-    ArrayList<String> images;
-    User writer;
+    Integer writerId;
     Integer views;
     ZonedDateTime createdAt;
 }
