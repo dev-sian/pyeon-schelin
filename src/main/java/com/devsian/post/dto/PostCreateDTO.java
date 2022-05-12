@@ -1,17 +1,27 @@
 package com.devsian.post.dto;
 
 import com.devsian.post.PostType;
+import com.devsian.post.entity.Post;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
-
+@Setter
+@Getter
 public class PostCreateDTO {
     String title;
     String content;
     Integer boardId;
     PostType postType;
-    ArrayList<String> images;
     Integer writerId;
-    Integer views;
-    ZonedDateTime createdAt;
+
+    public Post toPost(){
+        var post = new Post();
+        post.setTitle(title);
+        post.setContent(content);
+        post.setBoardId(boardId);
+        post.setPostType(postType);
+        post.setWriterId(writerId);
+
+        return post;
+    }
 }

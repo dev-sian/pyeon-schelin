@@ -2,6 +2,7 @@ package com.devsian.post.bo;
 
 import com.devsian.post.PostType;
 import com.devsian.post.dao.PostDAO;
+import com.devsian.post.dto.PostCreateDTO;
 import com.devsian.post.dto.PostReadDTO;
 import com.devsian.post.entity.Post;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,20 @@ public class PostApiBO {
                 .map(Post::getPostType)
                 .orElse(null);
 
+        PostBO postBO = getPostBO(postType);
+
+        return postBO.getAllPost(posts);
+    }
+
+    public PostReadDTO createPost(PostCreateDTO postCreateDTO){
+        PostType postType = postCreateDTO.getPostType();
+
+        PostBO postBO = getPostBO(postType);
+
+        return postBO.createPost(postCreateDTO);
+    }
+
+    PostBO getPostBO(PostType postType){
         PostBO postBO = null;
 
         switch(postType){
@@ -38,6 +53,6 @@ public class PostApiBO {
                 break;
         }
 
-        return postBO.getAllPost(posts);
+        return postBO;
     }
 }

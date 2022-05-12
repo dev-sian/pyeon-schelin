@@ -2,6 +2,7 @@ package com.devsian.post.bo;
 
 import com.devsian.post.dao.PostDAO;
 import com.devsian.post.dto.GeneralPostReadDTO;
+import com.devsian.post.dto.PostCreateDTO;
 import com.devsian.post.dto.PostReadDTO;
 import com.devsian.post.entity.Post;
 import lombok.RequiredArgsConstructor;
@@ -18,5 +19,14 @@ public class GeneralPostBO extends PostBO{
         return posts.stream()
                 .map(GeneralPostReadDTO::new)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public PostReadDTO createPost(PostCreateDTO postCreateDTO) {
+        var post = postCreateDTO.toPost();
+
+        postDAO.insertPost(post);
+
+        return new GeneralPostReadDTO(post);
     }
 }
