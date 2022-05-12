@@ -1,5 +1,6 @@
 package com.devsian.post.entity;
 
+import com.devsian.post.PostType;
 import com.devsian.user.entity.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +17,7 @@ public abstract class Post {
     String title;
     String content;
     Integer boardId;
+    PostType postType;
     ArrayList<String> images;
     User writer;
     Integer views;
