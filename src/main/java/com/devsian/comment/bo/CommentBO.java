@@ -37,4 +37,11 @@ public class CommentBO {
         var comment = CommentConverter.of(commentId, commentUpdateDTO);
         commentDAO.update(comment);
     }
+
+    public void delete(Integer commentId) {
+        /*
+            ToDo : userId 검증 단계. --> 해당 user가 comment를 작성했는지 확인.
+        */
+        commentDAO.delete(commentId);
+    }
 }

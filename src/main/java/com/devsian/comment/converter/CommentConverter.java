@@ -31,9 +31,9 @@ public class CommentConverter {
                 .build();
     }
 
-    public static Comment of(Integer writerId, CommentUpdateDTO commentUpdateDTO) {
+    public static Comment of(Integer commentId, CommentUpdateDTO commentUpdateDTO) {
         return Comment.builder()
-                .commentWriter(new User(writerId))
+                .id(commentId)
                 .content(commentUpdateDTO.getContent())
                 .build();
     }

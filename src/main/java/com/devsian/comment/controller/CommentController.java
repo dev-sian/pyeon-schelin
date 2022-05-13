@@ -34,4 +34,12 @@ public class CommentController {
         commentBO.update(commentId, commentUpdateDTO);
         return ResponseEntity.ok("success");
     }
+
+    @DeleteMapping("/v1.0/comment/{commentId}")
+    public ResponseEntity<String> deleteComment(@PathVariable Integer commentId) {
+        commentBO.delete(commentId);
+        return ResponseEntity.ok("success");
+    }
+
+
 }

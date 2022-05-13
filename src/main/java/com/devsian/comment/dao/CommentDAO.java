@@ -14,4 +14,6 @@ public interface CommentDAO {
     List<Comment> selectAll(int postId, int offset);
     // U
     void update(Comment comment);
+    // D
+    void delete(Integer commentId);
 }
