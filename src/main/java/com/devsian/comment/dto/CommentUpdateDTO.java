@@ -8,5 +8,5 @@ import lombok.ToString;
 @Setter
 @ToString
 public class CommentUpdateDTO {
-    String content;
+    private String content;
 }

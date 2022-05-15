@@ -10,7 +10,7 @@ import lombok.ToString;
 @ToString
 @Builder
 public class CommentCreateDTO {
-    Integer userId;
-    Integer postId;
-    String content;
+    private Integer userId;
+    private Integer postId;
+    private String content;
 }

@@ -13,8 +13,19 @@
     </resultMap>
 
 
+    <insert id="insert" parameterType="com.devsian.comment.entity.Comment">
+        insert into comment(writerId, content, postId) values(${commentWriter.getId()}, #{content}, ${postId})
+    </insert>
+
     <select id="selectAll" resultMap="commentResultMap">
-        select c.id, c.content, u.nickname, c.createdAt, u.userId, u.tier from comment c inner join user u on c.writerId = u.id where postId = ${postId} limit 10 offset ${offset}
+        select c.id, c.content, u.nickname, c.createdAt, u.userId, u.tier from pyeonschelin.comment c inner join user u on c.writerId = u.id where postId = ${postId} order by c.id ASC limit 10 offset ${offset}
     </select>
 
+    <update id="update" parameterType="com.devsian.comment.entity.Comment">
+        update comment set content = #{content} where id = ${id}
+    </update>
+
+    <delete id="delete">
+        delete from comment where id = ${id}
+    </delete>
 </mapper>

@@ -12,8 +12,8 @@ import java.time.ZonedDateTime;
 @ToString
 @Builder
 public class CommentReadDTO {
-    Integer id;
-    String content;
-    String nickname;
-    ZonedDateTime createdAt;
+    private Integer id;
+    private String content;
+    private String nickname;
+    private ZonedDateTime createdAt;
 }

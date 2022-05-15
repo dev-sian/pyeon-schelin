@@ -11,9 +11,9 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @Builder
 public class Comment {
-    Integer id;
-    Integer postId;
-    User commentWriter;
-    String content;
-    ZonedDateTime createdAt;
+    private Integer id;
+    private Integer postId;
+    private User commentWriter;
+    private String content;
+    private ZonedDateTime createdAt;
 }
