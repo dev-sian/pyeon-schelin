@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class PostApiBO {
+public class PostFacade {
     private final PostDAO postDAO;
 
     public List<PostReadDTO> getAllPost(Integer boardId){
