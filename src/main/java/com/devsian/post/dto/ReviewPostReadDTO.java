@@ -9,7 +9,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class ReviewPostReadDTO extends PostReadDTO{
     String productName;
     CSName csName;

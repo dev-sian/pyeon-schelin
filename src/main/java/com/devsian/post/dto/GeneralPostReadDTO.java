@@ -8,7 +8,6 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class GeneralPostReadDTO extends PostReadDTO{
     public GeneralPostReadDTO(Post post){
         this.title = post.getTitle();

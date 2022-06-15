@@ -3,6 +3,7 @@ package com.devsian.post.bo;
 import com.devsian.post.dao.PostDAO;
 import com.devsian.post.dto.PostCreateDTO;
 import com.devsian.post.dto.PostReadDTO;
+import com.devsian.post.dto.ReviewPostCreateDTO;
 import com.devsian.post.dto.ReviewPostReadDTO;
 import com.devsian.post.entity.Post;
 import com.devsian.post.entity.ReviewInfo;
@@ -32,8 +33,18 @@ public class ReveiwPostBO extends PostBO{
                 .collect(Collectors.toList());
     }
 
-    @Override
+        @Override
     public PostReadDTO createPost(PostCreateDTO postCreateDTO) {
-        return null;
+        var post = postCreateDTO.toPost();
+
+        postDAO.insertPost(post);
+
+        ((ReviewPostCreateDTO)postCreateDTO).setPostId(post.getId());
+
+        var reviewInfo = ((ReviewPostCreateDTO)postCreateDTO).toReviewInfo();
+
+        postDAO.insertReviewInfo(reviewInfo);
+
+        return new ReviewPostReadDTO(post, reviewInfo);
     }
 }

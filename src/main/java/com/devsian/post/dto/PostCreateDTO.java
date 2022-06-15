@@ -3,6 +3,7 @@ package com.devsian.post.dto;
 import com.devsian.post.CSName;
 import com.devsian.post.PostType;
 import com.devsian.post.entity.Post;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import lombok.Setter;
 @Getter
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "postType")
 @JsonSubTypes({
+        @JsonSubTypes.Type(value = ReviewPostCreateDTO.class, name = "REVIEW_POST"),
         @JsonSubTypes.Type(value = GeneralPostCreateDTO.class, name = "GENERAL_POST")
 })
 public class PostCreateDTO {

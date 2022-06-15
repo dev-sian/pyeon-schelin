@@ -4,6 +4,7 @@ import com.devsian.post.entity.Post;
 import com.devsian.post.entity.ReviewInfo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -17,5 +18,9 @@ public interface PostDAO {
     List<ReviewInfo> selectAllReviewInfo();
 
     @Insert("INSERT INTO post(title, content, boardId, postType, writerId) VALUES(#{title}, #{content}, #{boardId}, #{postType}, #{writerId})")
-    void insertPost(Post post);
+    @Options(useGeneratedKeys=true, keyProperty="id")
+    Integer insertPost(Post post);
+
+    @Insert("INSERT INTO reviewInfo(postId, productName, csName) VALUES(#{postId}, #{productName}, #{csName})")
+    Integer insertReviewInfo(ReviewInfo reviewInfo);
 }
