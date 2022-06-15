@@ -6,10 +6,12 @@ import com.devsian.post.dto.PostCreateDTO;
 import com.devsian.post.dto.PostReadDTO;
 import com.devsian.post.entity.Post;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 @RequiredArgsConstructor
 public class GeneralPostBO extends PostBO{
     private final PostDAO postDAO;

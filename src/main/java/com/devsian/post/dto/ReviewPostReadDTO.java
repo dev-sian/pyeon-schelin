@@ -15,7 +15,7 @@ public class ReviewPostReadDTO extends PostReadDTO{
     CSName csName;
     Double rating;
     public ReviewPostReadDTO(Post post, ReviewInfo reviewInfo){
-        this.title = post.getTitle();
+        setTitle(post.getTitle());
         this.content = post.getContent();
         this.writerId = post.getWriterId();
         this.views = post.getViews();
