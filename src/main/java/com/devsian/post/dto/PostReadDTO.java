@@ -11,6 +11,7 @@ import java.time.ZonedDateTime;
 @Setter
 @NoArgsConstructor
 public class PostReadDTO {
+    protected Integer id;
     protected String title;
     protected String content;
     protected Integer writerId;
