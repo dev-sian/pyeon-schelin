@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "postType")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "postType", visible = true)
 @JsonSubTypes({
         @JsonSubTypes.Type(value = ReviewPostCreateDTO.class, name = "REVIEW_POST"),
         @JsonSubTypes.Type(value = GeneralPostCreateDTO.class, name = "GENERAL_POST")
