@@ -17,7 +17,6 @@ public class ReviewPostCreateDTO extends PostCreateDTO{
                 .postId(postId)
                 .productName(productName)
                 .csName(csName)
-                .rating(0.0)
                 .build();
     }
 }
