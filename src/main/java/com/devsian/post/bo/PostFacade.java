@@ -30,6 +30,16 @@ public class PostFacade {
         return postBO.getAllPost(posts);
     }
 
+    public PostReadDTO getPost(Integer postId){
+        var post = postDAO.selectPost(postId);
+
+        PostType postType = post.getPostType();
+
+        PostBO postBO = getPostBO(postType);
+
+        return postBO.getPost(post);
+    }
+
     public PostReadDTO createPost(PostCreateDTO postCreateDTO){
         PostType postType = postCreateDTO.getPostType();
 

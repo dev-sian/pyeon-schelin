@@ -3,6 +3,7 @@ package com.devsian.post.controller;
 import com.devsian.post.bo.PostFacade;
 import com.devsian.post.dto.PostCreateDTO;
 import com.devsian.post.dto.PostReadDTO;
+import com.devsian.post.dto.PostUpdateDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,12 @@ public class PostController {
     public ResponseEntity<List<PostReadDTO>> getPosts(@PathVariable Integer boardId){
         var postReadDTOList = postFacade.getAllPost(boardId);
         return ResponseEntity.ok(postReadDTOList);
+    }
+
+    @GetMapping("/post/{postId}")
+    public ResponseEntity<PostReadDTO> getPost(@PathVariable Integer postId){
+        var postReadDTO = postFacade.getPost(postId);
+        return ResponseEntity.ok(postReadDTO);
     }
 
     @PostMapping("/post")

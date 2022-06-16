@@ -15,9 +15,7 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class ReveiwPostBO extends PostBO{
-
     private final PostDAO postDAO;
-
     @Override
     public List<PostReadDTO> getAllPost(List<Post> posts) {
 
@@ -33,7 +31,14 @@ public class ReveiwPostBO extends PostBO{
                 .collect(Collectors.toList());
     }
 
-        @Override
+    @Override
+    public PostReadDTO getPost(Post post) {
+        var reviewInfo = postDAO.selectReviewInfo(post.getId());
+
+        return new ReviewPostReadDTO(post, reviewInfo);
+    }
+
+    @Override
     public PostReadDTO createPost(PostCreateDTO postCreateDTO) {
         var post = postCreateDTO.toPost();
 
