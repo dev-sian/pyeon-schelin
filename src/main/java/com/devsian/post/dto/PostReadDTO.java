@@ -11,9 +11,9 @@ import java.time.ZonedDateTime;
 @Setter
 @NoArgsConstructor
 public class PostReadDTO {
-    String title;
-    String content;
-    Integer writerId;
-    Integer views;
-    ZonedDateTime createdAt;
+    protected String title;
+    protected String content;
+    protected Integer writerId;
+    protected Integer views;
+    protected ZonedDateTime createdAt;
 }

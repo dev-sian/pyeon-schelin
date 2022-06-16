@@ -9,9 +9,9 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class ReviewInfo {
-    Integer id;
-    Integer postId;
-    String productName;
-    CSName csName;
-    Double rating;
+    private Integer id;
+    private Integer postId;
+    private String productName;
+    private CSName csName;
+    private Double rating;
 }

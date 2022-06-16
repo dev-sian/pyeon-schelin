@@ -10,9 +10,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ReviewPostReadDTO extends PostReadDTO{
-    String productName;
-    CSName csName;
-    Double rating;
+    private String productName;
+    private CSName csName;
+    private Double rating;
     public ReviewPostReadDTO(Post post, ReviewInfo reviewInfo){
         setTitle(post.getTitle());
         this.content = post.getContent();

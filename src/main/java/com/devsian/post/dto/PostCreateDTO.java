@@ -17,11 +17,11 @@ import lombok.Setter;
         @JsonSubTypes.Type(value = GeneralPostCreateDTO.class, name = "GENERAL_POST")
 })
 public class PostCreateDTO {
-    String title;
-    String content;
-    Integer boardId;
-    PostType postType;
-    Integer writerId;
+    protected String title;
+    protected String content;
+    protected Integer boardId;
+    protected PostType postType;
+    protected Integer writerId;
 
     public Post toPost(){
         var post = new Post();
