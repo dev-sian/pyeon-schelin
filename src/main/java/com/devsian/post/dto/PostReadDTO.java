@@ -1,24 +1,19 @@
-package com.devsian.post.entity;
+package com.devsian.post.dto;
 
-import com.devsian.post.PostType;
-import com.devsian.user.dto.UserReadDTO;
-import com.devsian.user.entity.User;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 
 @Getter
 @Setter
-public class Post {
+@NoArgsConstructor
+public class PostReadDTO {
     protected Integer id;
     protected String title;
     protected String content;
-    protected Integer boardId;
-    protected PostType postType;
     protected Integer writerId;
     protected Integer views;
     protected ZonedDateTime createdAt;
