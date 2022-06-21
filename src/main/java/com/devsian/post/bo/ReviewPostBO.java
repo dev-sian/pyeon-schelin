@@ -14,7 +14,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
-public class ReveiwPostBO extends PostBO{
+public class ReviewPostBO extends PostBO{
     private final PostDAO postDAO;
     @Override
     public List<PostReadDTO> getAllPost(List<Post> posts) {

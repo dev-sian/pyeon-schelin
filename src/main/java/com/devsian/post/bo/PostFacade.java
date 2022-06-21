@@ -56,7 +56,7 @@ public class PostFacade {
                 postBO = new GeneralPostBO(postDAO);
                 break;
             case REVIEW_POST:
-                postBO = new ReveiwPostBO(postDAO);
+                postBO = new ReviewPostBO(postDAO);
                 break;
             default:
                 log.error("없는 post type");
