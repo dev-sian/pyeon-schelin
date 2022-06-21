@@ -16,6 +16,8 @@ import java.util.List;
 @Slf4j
 public class PostFacade {
     private final PostDAO postDAO;
+    private final GeneralPostBO generalPostBO;
+    private final ReviewPostBO reviewPostBO;
 
     public List<PostReadDTO> getAllPost(Integer boardId){
         var posts = postDAO.selectAllPosts(boardId);
@@ -53,10 +55,10 @@ public class PostFacade {
 
         switch(postType){
             case GENERAL_POST:
-                postBO = new GeneralPostBO(postDAO);
+                postBO = generalPostBO;
                 break;
             case REVIEW_POST:
-                postBO = new ReviewPostBO(postDAO);
+                postBO = reviewPostBO;
                 break;
             default:
                 log.error("없는 post type");
