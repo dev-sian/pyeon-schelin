@@ -26,4 +26,10 @@ public interface PostDAO {
 
     @Insert("INSERT INTO reviewInfo(postId, productName, csName) VALUES(#{postId}, #{productName}, #{csName})")
     Integer insertReviewInfo(ReviewInfo reviewInfo);
+
+    @Delete("DELETE FROM post WHERE id=#{postId}")
+    void deletePost(Integer postId);
+
+    @Delete("DELETE FROM reviewInfo WHERE postId=#{postId}")
+    void deleteReviewInfo(Integer postId);
 }

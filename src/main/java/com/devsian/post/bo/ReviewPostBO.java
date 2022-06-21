@@ -8,11 +8,13 @@ import com.devsian.post.dto.ReviewPostReadDTO;
 import com.devsian.post.entity.Post;
 import com.devsian.post.entity.ReviewInfo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@Service
 @RequiredArgsConstructor
 public class ReviewPostBO extends PostBO{
     private final PostDAO postDAO;
@@ -49,5 +51,11 @@ public class ReviewPostBO extends PostBO{
         var reviewInfo = ((ReviewPostCreateDTO)postCreateDTO).toReviewInfo();
 
         postDAO.insertReviewInfo(reviewInfo);
+    }
+
+    @Override
+    public void deletePost(Integer postId) {
+        postDAO.deletePost(postId);
+        postDAO.deleteReviewInfo(postId);
     }
 }

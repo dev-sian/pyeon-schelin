@@ -19,4 +19,10 @@ public class PostBO {
     public void createPost(PostCreateDTO postCreateDTO){
 
     }
+
+    public void deletePost(Integer postId){
+        /*
+        * TODO: writer 검증
+        *  */
+    }
 }

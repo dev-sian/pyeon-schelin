@@ -34,4 +34,10 @@ public class PostController {
         postFacade.createPost(postCreateDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @DeleteMapping("/post/{postId}")
+    public ResponseEntity<Void> deletePost(@PathVariable Integer postId){
+        postFacade.deletePost(postId);
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -34,4 +34,9 @@ public class GeneralPostBO extends PostBO{
 
         postDAO.insertPost(post);
     }
+
+    @Override
+    public void deletePost(Integer postId) {
+        postDAO.deletePost(postId);
+    }
 }

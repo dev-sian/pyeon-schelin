@@ -50,6 +50,17 @@ public class PostFacade {
         postBO.createPost(postCreateDTO);
     }
 
+    public void deletePost(Integer postId){
+        // PostType을 구하기 위해 postId로 디비 조회
+        var post = postDAO.selectPost(postId);
+
+        PostType postType = post.getPostType();
+
+        PostBO postBO = getPostBO(postType);
+
+        postBO.deletePost(postId);
+    }
+
     PostBO getPostBO(PostType postType){
         PostBO postBO = null;
 
