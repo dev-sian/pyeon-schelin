@@ -42,12 +42,12 @@ public class PostFacade {
         return postBO.getPost(post);
     }
 
-    public PostReadDTO createPost(PostCreateDTO postCreateDTO){
+    public void createPost(PostCreateDTO postCreateDTO){
         PostType postType = postCreateDTO.getPostType();
 
         PostBO postBO = getPostBO(postType);
 
-        return postBO.createPost(postCreateDTO);
+        postBO.createPost(postCreateDTO);
     }
 
     PostBO getPostBO(PostType postType){

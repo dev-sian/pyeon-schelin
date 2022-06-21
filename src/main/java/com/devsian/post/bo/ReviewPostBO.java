@@ -39,7 +39,7 @@ public class ReviewPostBO extends PostBO{
     }
 
     @Override
-    public PostReadDTO createPost(PostCreateDTO postCreateDTO) {
+    public void createPost(PostCreateDTO postCreateDTO) {
         var post = postCreateDTO.toPost();
 
         postDAO.insertPost(post);
@@ -49,7 +49,5 @@ public class ReviewPostBO extends PostBO{
         var reviewInfo = ((ReviewPostCreateDTO)postCreateDTO).toReviewInfo();
 
         postDAO.insertReviewInfo(reviewInfo);
-
-        return new ReviewPostReadDTO(post, reviewInfo);
     }
 }

@@ -29,11 +29,9 @@ public class GeneralPostBO extends PostBO{
     }
 
     @Override
-    public PostReadDTO createPost(PostCreateDTO postCreateDTO) {
+    public void createPost(PostCreateDTO postCreateDTO) {
         var post = postCreateDTO.toPost();
 
         postDAO.insertPost(post);
-
-        return new GeneralPostReadDTO(post);
     }
 }
