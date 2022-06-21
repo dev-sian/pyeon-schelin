@@ -14,12 +14,12 @@ import java.util.ArrayList;
 @Getter
 @Setter
 public class Post {
-    protected Integer id;
-    protected String title;
-    protected String content;
-    protected Integer boardId;
-    protected PostType postType;
-    protected Integer writerId;
-    protected Integer views;
-    protected ZonedDateTime createdAt;
+    private Integer id;
+    private String title;
+    private String content;
+    private Integer boardId;
+    private PostType postType;
+    private Integer writerId;
+    private Integer views;
+    private ZonedDateTime createdAt;
 }

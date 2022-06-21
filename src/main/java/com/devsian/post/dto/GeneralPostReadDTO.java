@@ -10,11 +10,11 @@ import lombok.*;
 @ToString
 public class GeneralPostReadDTO extends PostReadDTO{
     public GeneralPostReadDTO(Post post){
-        this.id = post.getId();
-        this.title = post.getTitle();
-        this.content = post.getContent();
-        this.writerId = post.getWriterId();
-        this.views = post.getViews();
-        this.createdAt = post.getCreatedAt();
+        setId(post.getId());
+        setTitle(post.getTitle());
+        setContent(post.getContent());
+        setWriterId(post.getWriterId());
+        setViews(post.getViews());
+        setCreatedAt(post.getCreatedAt());
     }
 }

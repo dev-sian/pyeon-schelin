@@ -15,11 +15,11 @@ public class ReviewPostReadDTO extends PostReadDTO{
     private Double rating;
     public ReviewPostReadDTO(Post post, ReviewInfo reviewInfo){
         setTitle(post.getTitle());
-        this.id = post.getId();
-        this.content = post.getContent();
-        this.writerId = post.getWriterId();
-        this.views = post.getViews();
-        this.createdAt = post.getCreatedAt();
+        setId(post.getId());
+        setContent(post.getContent());
+        setWriterId(post.getWriterId());
+        setViews(post.getViews());
+        setCreatedAt(post.getCreatedAt());
 
         this.productName = reviewInfo.getProductName();
         this.csName = reviewInfo.getCsName();
