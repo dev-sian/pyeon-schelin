@@ -21,7 +21,7 @@ public class ReviewPostBO extends PostBO {
     }
 
     @Override
-    public List<PostReadDTO> getAllPost(List<Post> posts) {
+    public List<PostReadDTO> getList(List<Post> posts) {
 
         var reviewInfos = postDAO.selectAllReviewInfo();
 
@@ -36,14 +36,14 @@ public class ReviewPostBO extends PostBO {
     }
 
     @Override
-    public PostReadDTO getPost(Post post) {
+    public PostReadDTO get(Post post) {
         var reviewInfo = postDAO.selectReviewInfo(post.getId());
 
         return new ReviewPostReadDTO(post, reviewInfo);
     }
 
     @Override
-    public void createPost(PostCreateDTO postCreateDTO) {
+    public void create(PostCreateDTO postCreateDTO) {
         var post = postCreateDTO.toPost();
 
         postDAO.insertPost(post);
@@ -56,8 +56,8 @@ public class ReviewPostBO extends PostBO {
     }
 
     @Override
-    public void updatePost(Integer postId, PostUpdateDTO postUpdateDTO) {
-        super.updatePost(postId, postUpdateDTO);
+    public void update(Integer postId, PostUpdateDTO postUpdateDTO) {
+        super.update(postId, postUpdateDTO);
 
         var reviewInfo = ((ReviewPostUpdateDTO)postUpdateDTO).toReviewInfo(postId);
 
@@ -65,8 +65,8 @@ public class ReviewPostBO extends PostBO {
     }
 
     @Override
-    public void deletePost(Integer postId) {
-        super.deletePost(postId);
+    public void delete(Integer postId) {
+        super.delete(postId);
         postDAO.deleteReviewInfo(postId);
     }
 }

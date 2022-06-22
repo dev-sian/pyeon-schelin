@@ -15,16 +15,16 @@ import java.util.List;
 public abstract class PostBO {
     protected final PostDAO postDAO;
 
-    public abstract List<PostReadDTO> getAllPost(List<Post> posts);
+    public abstract List<PostReadDTO> getList(List<Post> posts);
 
-    public abstract PostReadDTO getPost(Post post);
-    public void createPost(PostCreateDTO postCreateDTO){
+    public abstract PostReadDTO get(Post post);
+    public void create(PostCreateDTO postCreateDTO){
         var post = postCreateDTO.toPost();
 
         postDAO.insertPost(post);
     }
 
-    public void updatePost(Integer postId, PostUpdateDTO postUpdateDTO){
+    public void update(Integer postId, PostUpdateDTO postUpdateDTO){
         /*
          * TODO: writer 검증
          *  */
@@ -33,7 +33,7 @@ public abstract class PostBO {
         postDAO.updatePost(post);
     }
 
-    public void deletePost(Integer postId){
+    public void delete(Integer postId){
         /*
         * TODO: writer 검증
         *  */

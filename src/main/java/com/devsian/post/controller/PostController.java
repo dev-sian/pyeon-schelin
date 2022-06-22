@@ -20,31 +20,31 @@ public class PostController {
 
     @GetMapping("/posts/{boardId}")
     public ResponseEntity<List<PostReadDTO>> getList(@PathVariable Integer boardId){
-        var postReadDTOList = postFacade.getAllPost(boardId);
+        var postReadDTOList = postFacade.getList(boardId);
         return ResponseEntity.ok(postReadDTOList);
     }
 
     @GetMapping("/posts/{postId}")
     public ResponseEntity<PostReadDTO> get(@PathVariable Integer postId){
-        var postReadDTO = postFacade.getPost(postId);
+        var postReadDTO = postFacade.get(postId);
         return ResponseEntity.ok(postReadDTO);
     }
 
     @PostMapping("/posts")
-    public ResponseEntity<Void> createPost(@RequestBody PostCreateDTO postCreateDTO){
-        postFacade.createPost(postCreateDTO);
+    public ResponseEntity<Void> create(@RequestBody PostCreateDTO postCreateDTO){
+        postFacade.create(postCreateDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PatchMapping("/posts/{postId}")
-    public ResponseEntity<Void> updatePost(@PathVariable Integer postId, @RequestBody PostUpdateDTO postUpdateDTO){
-        postFacade.updatePost(postId, postUpdateDTO);
+    public ResponseEntity<Void> update(@PathVariable Integer postId, @RequestBody PostUpdateDTO postUpdateDTO){
+        postFacade.update(postId, postUpdateDTO);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/posts/{postId}")
-    public ResponseEntity<Void> deletePost(@PathVariable Integer postId){
-        postFacade.deletePost(postId);
+    public ResponseEntity<Void> delete(@PathVariable Integer postId){
+        postFacade.delete(postId);
         return ResponseEntity.noContent().build();
     }
 }

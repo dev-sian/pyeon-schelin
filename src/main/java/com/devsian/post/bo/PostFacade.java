@@ -20,7 +20,7 @@ public class PostFacade {
     private final GeneralPostBO generalPostBO;
     private final ReviewPostBO reviewPostBO;
 
-    public List<PostReadDTO> getAllPost(Integer boardId){
+    public List<PostReadDTO> getList(Integer boardId){
         var posts = postDAO.selectAllPosts(boardId);
 
         PostType postType = posts.stream()
@@ -30,36 +30,36 @@ public class PostFacade {
 
         PostBO postBO = getPostBO(postType);
 
-        return postBO.getAllPost(posts);
+        return postBO.getList(posts);
     }
 
-    public PostReadDTO getPost(Integer postId){
+    public PostReadDTO get(Integer postId){
         var post = postDAO.selectPost(postId);
 
         PostType postType = post.getPostType();
 
         PostBO postBO = getPostBO(postType);
 
-        return postBO.getPost(post);
+        return postBO.get(post);
     }
 
-    public void createPost(PostCreateDTO postCreateDTO){
+    public void create(PostCreateDTO postCreateDTO){
         PostType postType = postCreateDTO.getPostType();
 
         PostBO postBO = getPostBO(postType);
 
-        postBO.createPost(postCreateDTO);
+        postBO.create(postCreateDTO);
     }
 
-    public void updatePost(Integer postId, PostUpdateDTO postUpdateDTO){
+    public void update(Integer postId, PostUpdateDTO postUpdateDTO){
         PostType postType = postUpdateDTO.getPostType();
 
         PostBO postBO = getPostBO(postType);
 
-        postBO.updatePost(postId, postUpdateDTO);
+        postBO.update(postId, postUpdateDTO);
     }
 
-    public void deletePost(Integer postId){
+    public void delete(Integer postId){
         // PostType을 구하기 위해 postId로 디비 조회
         var post = postDAO.selectPost(postId);
 
@@ -67,7 +67,7 @@ public class PostFacade {
 
         PostBO postBO = getPostBO(postType);
 
-        postBO.deletePost(postId);
+        postBO.delete(postId);
     }
 
     PostBO getPostBO(PostType postType){

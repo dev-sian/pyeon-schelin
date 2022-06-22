@@ -22,29 +22,29 @@ public class GeneralPostBO extends PostBO{
     }
 
     @Override
-    public List<PostReadDTO> getAllPost(List<Post> posts) {
+    public List<PostReadDTO> getList(List<Post> posts) {
         return posts.stream()
                 .map(GeneralPostReadDTO::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public PostReadDTO getPost(Post post) {
+    public PostReadDTO get(Post post) {
         return new GeneralPostReadDTO(post);
     }
 
     @Override
-    public void createPost(PostCreateDTO postCreateDTO) {
-        super.createPost(postCreateDTO);
+    public void create(PostCreateDTO postCreateDTO) {
+        super.create(postCreateDTO);
     }
 
     @Override
-    public void updatePost(Integer postId, PostUpdateDTO postUpdateDTO) {
-        super.updatePost(postId, postUpdateDTO);
+    public void update(Integer postId, PostUpdateDTO postUpdateDTO) {
+        super.update(postId, postUpdateDTO);
     }
 
     @Override
-    public void deletePost(Integer postId) {
-        super.deletePost(postId);
+    public void delete(Integer postId) {
+        super.delete(postId);
     }
 }
