@@ -1,0 +1,50 @@
+### create general post
+POST http://localhost:8080/posts
+Content-Type: application/json
+
+{
+  "title" : "insert test title",
+  "content" : "insert test content",
+  "boardId" : 2,
+  "postType" : "GENERAL_POST",
+  "writerId" : 1
+}
+
+### create review post
+POST http://localhost:8080/posts
+Content-Type: application/json
+
+{
+  "title" : "insert test title2",
+  "content" : "insert test content2",
+  "boardId" : 1,
+  "postType" : "REVIEW_POST",
+  "writerId" : 1,
+  "productName" : "로제불닭볶음면",
+  "csName" : "GS25"
+}
+
+### update general post
+PATCH http://localhost:8080/posts/7
+Content-Type: application/json
+
+{
+  "title" : "update test title",
+  "content" : "update test content",
+  "boardId" : 2,
+  "postType" : "GENERAL_POST"
+}
+
+### update review post
+PATCH http://localhost:8080/posts/18
+Content-Type: application/json
+
+{
+  "title" : "update test title2",
+  "boardId" : 1,
+  "postType" : "REVIEW_POST",
+  "productName" : "불닭볶"
+}
+
+### delete post
+DELETE http://localhost:8080/posts/5
