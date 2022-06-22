@@ -4,6 +4,7 @@ import com.devsian.post.PostType;
 import com.devsian.post.dao.PostDAO;
 import com.devsian.post.dto.PostCreateDTO;
 import com.devsian.post.dto.PostReadDTO;
+import com.devsian.post.dto.PostUpdateDTO;
 import com.devsian.post.entity.Post;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +49,14 @@ public class PostFacade {
         PostBO postBO = getPostBO(postType);
 
         postBO.createPost(postCreateDTO);
+    }
+
+    public void updatePost(Integer postId, PostUpdateDTO postUpdateDTO){
+        PostType postType = postUpdateDTO.getPostType();
+
+        PostBO postBO = getPostBO(postType);
+
+        postBO.updatePost(postId, postUpdateDTO);
     }
 
     public void deletePost(Integer postId){

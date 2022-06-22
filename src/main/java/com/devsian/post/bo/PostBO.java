@@ -3,6 +3,7 @@ package com.devsian.post.bo;
 import com.devsian.post.dao.PostDAO;
 import com.devsian.post.dto.PostCreateDTO;
 import com.devsian.post.dto.PostReadDTO;
+import com.devsian.post.dto.PostUpdateDTO;
 import com.devsian.post.entity.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,15 @@ public abstract class PostBO {
         var post = postCreateDTO.toPost();
 
         postDAO.insertPost(post);
+    }
+
+    public void updatePost(Integer postId, PostUpdateDTO postUpdateDTO){
+        /*
+         * TODO: writer 검증
+         *  */
+        var post = postUpdateDTO.toPost(postId);
+
+        postDAO.updatePost(post);
     }
 
     public void deletePost(Integer postId){

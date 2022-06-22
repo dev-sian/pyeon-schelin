@@ -56,6 +56,15 @@ public class ReviewPostBO extends PostBO {
     }
 
     @Override
+    public void updatePost(Integer postId, PostUpdateDTO postUpdateDTO) {
+        super.updatePost(postId, postUpdateDTO);
+
+        var reviewInfo = ((ReviewPostUpdateDTO)postUpdateDTO).toReviewInfo(postId);
+
+        postDAO.updateReviewInfo(reviewInfo);
+    }
+
+    @Override
     public void deletePost(Integer postId) {
         super.deletePost(postId);
         postDAO.deleteReviewInfo(postId);

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mybatis-3-mapper.dtd에 주목 -->
+<mapper namespace="com.devsian.post.dao.PostDAO">
+    <update id="updatePost" parameterType="com.devsian.post.entity.Post">
+        UPDATE post
+        <set>
+            <if test="title != null">title=#{title},</if>
+            <if test="content != null">content=#{content}</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <update id="updateReviewInfo" parameterType="com.devsian.post.entity.ReviewInfo">
+        UPDATE reviewInfo
+        <set>
+            <if test="productName != null">productName=#{productName},</if>
+            <if test="csName != null">csName=#{csName}</if>
+        </set>
+        WHERE postId=#{postId}
+    </update>
+
+</mapper>

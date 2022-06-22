@@ -4,6 +4,7 @@ import com.devsian.post.dao.PostDAO;
 import com.devsian.post.dto.GeneralPostReadDTO;
 import com.devsian.post.dto.PostCreateDTO;
 import com.devsian.post.dto.PostReadDTO;
+import com.devsian.post.dto.PostUpdateDTO;
 import com.devsian.post.entity.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,11 @@ public class GeneralPostBO extends PostBO{
     @Override
     public void createPost(PostCreateDTO postCreateDTO) {
         super.createPost(postCreateDTO);
+    }
+
+    @Override
+    public void updatePost(Integer postId, PostUpdateDTO postUpdateDTO) {
+        super.updatePost(postId, postUpdateDTO);
     }
 
     @Override

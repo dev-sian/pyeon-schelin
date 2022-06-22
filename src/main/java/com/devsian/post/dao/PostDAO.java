@@ -32,4 +32,8 @@ public interface PostDAO {
 
     @Delete("DELETE FROM reviewInfo WHERE postId=#{postId}")
     void deleteReviewInfo(Integer postId);
+
+    void updatePost(Post post);
+
+    void updateReviewInfo(ReviewInfo reviewInfo);
 }
