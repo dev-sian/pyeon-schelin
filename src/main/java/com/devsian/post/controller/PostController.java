@@ -19,12 +19,13 @@ public class PostController {
     private final PostFacade postFacade;
 
     @GetMapping("/posts/{boardId}")
-    public ResponseEntity<List<PostReadDTO>> getList(@PathVariable Integer boardId){
-        var postReadDTOList = postFacade.getList(boardId);
+    public ResponseEntity<List<PostReadDTO>> getList(@RequestParam("offset") int offset, @PathVariable Integer boardId){
+        // offset : queryString (@RequestParam), boardId : pathParameter (@PathVariable)
+        var postReadDTOList = postFacade.getList(boardId, offset);
         return ResponseEntity.ok(postReadDTOList);
     }
 
-    @GetMapping("/posts/{postId}")
+    @GetMapping("/post/{postId}")
     public ResponseEntity<PostReadDTO> get(@PathVariable Integer postId){
         var postReadDTO = postFacade.get(postId);
         return ResponseEntity.ok(postReadDTO);

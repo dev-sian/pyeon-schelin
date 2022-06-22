@@ -8,8 +8,8 @@ import java.util.List;
 
 @Mapper
 public interface PostDAO {
-    @Select("SELECT * FROM post WHERE boardId=#{boardId}")
-    List<Post> selectAllPosts(Integer boardId);
+    @Select("SELECT * FROM post WHERE boardId=#{boardId} limit 10 offset #{offset}")
+    List<Post> selectAllPosts(Integer boardId, Integer offset);
 
     @Select("SELECT * FROM post WHERE id=#{postId}")
     Post selectPost(Integer postId);

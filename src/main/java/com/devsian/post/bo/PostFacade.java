@@ -20,8 +20,8 @@ public class PostFacade {
     private final GeneralPostBO generalPostBO;
     private final ReviewPostBO reviewPostBO;
 
-    public List<PostReadDTO> getList(Integer boardId){
-        var posts = postDAO.selectAllPosts(boardId);
+    public List<PostReadDTO> getList(Integer boardId, int offset){
+        var posts = postDAO.selectAllPosts(boardId, offset*10);
 
         PostType postType = posts.stream()
                 .findAny()
