@@ -10,19 +10,23 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PostBO {
-    public List<PostReadDTO> getAllPost(List<Post> posts){
-        return null;
-    }
+@RequiredArgsConstructor
+public abstract class PostBO {
+    protected final PostDAO postDAO;
 
-    public PostReadDTO getPost(Post post){return null;}
+    public abstract List<PostReadDTO> getAllPost(List<Post> posts);
+
+    public abstract PostReadDTO getPost(Post post);
     public void createPost(PostCreateDTO postCreateDTO){
+        var post = postCreateDTO.toPost();
 
+        postDAO.insertPost(post);
     }
 
     public void deletePost(Integer postId){
         /*
         * TODO: writer 검증
         *  */
+        postDAO.deletePost(postId);
     }
 }

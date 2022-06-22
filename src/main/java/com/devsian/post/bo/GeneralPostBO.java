@@ -6,15 +6,19 @@ import com.devsian.post.dto.PostCreateDTO;
 import com.devsian.post.dto.PostReadDTO;
 import com.devsian.post.entity.Post;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class GeneralPostBO extends PostBO{
-    private final PostDAO postDAO;
+
+    @Autowired
+    public GeneralPostBO(PostDAO postDAO) {
+        super(postDAO);
+    }
 
     @Override
     public List<PostReadDTO> getAllPost(List<Post> posts) {
@@ -30,13 +34,11 @@ public class GeneralPostBO extends PostBO{
 
     @Override
     public void createPost(PostCreateDTO postCreateDTO) {
-        var post = postCreateDTO.toPost();
-
-        postDAO.insertPost(post);
+        super.createPost(postCreateDTO);
     }
 
     @Override
     public void deletePost(Integer postId) {
-        postDAO.deletePost(postId);
+        super.deletePost(postId);
     }
 }
