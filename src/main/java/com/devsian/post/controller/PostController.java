@@ -24,7 +24,8 @@ public class PostController {
         return ResponseEntity.ok(postReadDTOList);
     }
 
-    @GetMapping("/posts/{postId}")
+
+    @GetMapping("/post/{postId}")
     public ResponseEntity<PostReadDTO> get(@PathVariable Integer postId){
         var postReadDTO = postFacade.get(postId);
         return ResponseEntity.ok(postReadDTO);
