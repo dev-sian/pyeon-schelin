@@ -18,18 +18,15 @@ public abstract class PostBO {
     public abstract List<PostReadDTO> getList(List<Post> posts);
 
     public abstract PostReadDTO get(Post post);
-    public void create(PostCreateDTO postCreateDTO){
-        var post = postCreateDTO.toPost();
 
+    public void create(Post post){
         postDAO.insertPost(post);
     }
 
-    public void update(Integer postId, PostUpdateDTO postUpdateDTO){
+    public void update(Post post){
         /*
          * TODO: writer 검증
          *  */
-        var post = postUpdateDTO.toPost(postId);
-
         postDAO.updatePost(post);
     }
 
