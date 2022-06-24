@@ -1,5 +1,6 @@
 package com.devsian.post.controller;
 
+import com.devsian.common.pagination.Pagination;
 import com.devsian.post.bo.PostFacade;
 import com.devsian.post.dto.PostCreateDTO;
 import com.devsian.post.dto.PostReadDTO;
@@ -10,8 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -19,9 +18,9 @@ public class PostController {
     private final PostFacade postFacade;
 
     @GetMapping("/posts/{boardId}")
-    public ResponseEntity<List<PostReadDTO>> getList(@PathVariable Integer boardId){
-        var postReadDTOList = postFacade.getList(boardId);
-        return ResponseEntity.ok(postReadDTOList);
+    public ResponseEntity<Pagination<PostReadDTO>> getList(@PathVariable Integer boardId, @RequestParam("page") Integer page, @RequestParam("listSizePerPage") Integer listSizePerPage){
+        Pagination<PostReadDTO> postPagination = postFacade.getList(boardId, page, listSizePerPage);
+        return ResponseEntity.ok(postPagination);
     }
 
     @GetMapping("/post/{postId}")

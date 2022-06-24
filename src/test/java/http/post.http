@@ -1,8 +1,8 @@
 ### get general post list
-GET http://localhost:8080/posts/2?offset=1
+GET http://localhost:8080/posts/2?page=3&listSizePerPage=5
 
 ### get review post list
-GET http://localhost:8080/posts/1
+GET http://localhost:8080/posts/1?page=1&listSizePerPage=5
 
 ### get general post
 GET http://localhost:8080/post/2

@@ -3,6 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mybatis-3-mapper.dtd에 주목 -->
 <mapper namespace="com.devsian.post.dao.PostDAO">
+    <select id="selectReviewInfoList" resultType="com.devsian.post.entity.ReviewInfo">
+        SELECT * FROM reviewInfo
+        <where>
+            <foreach collection="idList" item="postId" open="postId IN (" separator="," close=")">
+                #{postId}
+            </foreach>
+        </where>
+    </select>
     <update id="updatePost" parameterType="com.devsian.post.entity.Post">
         UPDATE post
         <set>
