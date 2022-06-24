@@ -27,7 +27,7 @@ public class PostFacade {
 
         Integer offset = postPagination.calcOffset(page, listSizePerPage);
 
-        var posts = postDAO.selectAllPosts(boardId, listSizePerPage, offset);
+        var posts = postDAO.selectPostList(boardId, listSizePerPage, offset);
 
         Post post = posts.stream()
                 .findAny()

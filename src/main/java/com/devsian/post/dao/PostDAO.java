@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface PostDAO {
     @Select("SELECT * FROM post WHERE boardId=#{boardId} LIMIT #{offset}, #{limit}")
-    List<Post> selectAllPosts(Integer boardId, Integer limit, Integer offset);
+    List<Post> selectPostList(Integer boardId, Integer limit, Integer offset);
 
     @Select("SELECT * FROM post WHERE id=#{postId}")
     Post selectPost(Integer postId);
