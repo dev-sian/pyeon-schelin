@@ -54,11 +54,13 @@ public class PostFacade {
     }
 
     public void update(Integer postId, PostUpdateDTO postUpdateDTO){
-        PostType postType = postUpdateDTO.getPostType();
+        var post = postUpdateDTO.toPost(postId);
+
+        PostType postType = post.getPostType();
 
         PostBO postBO = getPostBO(postType);
 
-        postBO.update(postId, postUpdateDTO);
+        postBO.update(post);
     }
 
     public void delete(Integer postId){

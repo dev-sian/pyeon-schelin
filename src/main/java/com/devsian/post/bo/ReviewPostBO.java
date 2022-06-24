@@ -53,10 +53,10 @@ public class ReviewPostBO extends PostBO {
     }
 
     @Override
-    public void update(Integer postId, PostUpdateDTO postUpdateDTO) {
-        super.update(postId, postUpdateDTO);
+    public void update(Post post) {
+        super.update(post);
 
-        var reviewInfo = ((ReviewPostUpdateDTO)postUpdateDTO).toReviewInfo(postId);
+        var reviewInfo = ((ReviewPost)post).toReviewInfo();
 
         postDAO.updateReviewInfo(reviewInfo);
     }

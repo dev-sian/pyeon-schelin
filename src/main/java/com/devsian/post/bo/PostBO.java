@@ -23,12 +23,10 @@ public abstract class PostBO {
         postDAO.insertPost(post);
     }
 
-    public void update(Integer postId, PostUpdateDTO postUpdateDTO){
+    public void update(Post post){
         /*
          * TODO: writer 검증
          *  */
-        var post = postUpdateDTO.toPost(postId);
-
         postDAO.updatePost(post);
     }
 

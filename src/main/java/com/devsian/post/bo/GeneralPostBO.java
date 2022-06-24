@@ -39,8 +39,8 @@ public class GeneralPostBO extends PostBO{
     }
 
     @Override
-    public void update(Integer postId, PostUpdateDTO postUpdateDTO) {
-        super.update(postId, postUpdateDTO);
+    public void update(Post post) {
+        super.update(post);
     }
 
     @Override
