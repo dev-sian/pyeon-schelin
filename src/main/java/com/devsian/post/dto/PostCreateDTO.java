@@ -16,21 +16,20 @@ import lombok.Setter;
         @JsonSubTypes.Type(value = ReviewPostCreateDTO.class, name = "REVIEW_POST"),
         @JsonSubTypes.Type(value = GeneralPostCreateDTO.class, name = "GENERAL_POST")
 })
-public class PostCreateDTO {
+public abstract class PostCreateDTO {
     private String title;
     private String content;
     private Integer boardId;
     private PostType postType;
     private Integer writerId;
 
-    public Post toPost(){
-        var post = new Post();
+    public void setPost(Post post){
         post.setTitle(title);
         post.setContent(content);
         post.setBoardId(boardId);
         post.setPostType(postType);
         post.setWriterId(writerId);
-
-        return post;
     }
+
+    public abstract Post toPost();
 }

@@ -34,8 +34,8 @@ public class GeneralPostBO extends PostBO{
     }
 
     @Override
-    public void create(PostCreateDTO postCreateDTO) {
-        super.create(postCreateDTO);
+    public void create(Post post) {
+        super.create(post);
     }
 
     @Override

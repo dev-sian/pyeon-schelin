@@ -4,6 +4,7 @@ import com.devsian.post.dao.PostDAO;
 import com.devsian.post.dto.*;
 import com.devsian.post.entity.Post;
 import com.devsian.post.entity.ReviewInfo;
+import com.devsian.post.entity.ReviewPost;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,14 +44,10 @@ public class ReviewPostBO extends PostBO {
     }
 
     @Override
-    public void create(PostCreateDTO postCreateDTO) {
-        var post = postCreateDTO.toPost();
+    public void create(Post post) {
+        super.create(post);
 
-        postDAO.insertPost(post);
-
-        ((ReviewPostCreateDTO)postCreateDTO).setPostId(post.getId());
-
-        var reviewInfo = ((ReviewPostCreateDTO)postCreateDTO).toReviewInfo();
+        var reviewInfo = ((ReviewPost)post).toReviewInfo();
 
         postDAO.insertReviewInfo(reviewInfo);
     }

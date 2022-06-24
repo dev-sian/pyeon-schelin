@@ -1,7 +1,10 @@
 package com.devsian.post.dto;
 
 import com.devsian.post.CSName;
+import com.devsian.post.entity.GeneralPost;
+import com.devsian.post.entity.Post;
 import com.devsian.post.entity.ReviewInfo;
+import com.devsian.post.entity.ReviewPost;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,11 +15,12 @@ public class ReviewPostCreateDTO extends PostCreateDTO{
     private String productName;
     private CSName csName;
 
-    public ReviewInfo toReviewInfo(){
-        return ReviewInfo.builder()
-                .postId(postId)
-                .productName(productName)
-                .csName(csName)
-                .build();
+    @Override
+    public ReviewPost toPost() {
+        var post = new ReviewPost();
+        super.setPost(post);
+        post.setProductName(productName);
+        post.setCsName(csName);
+        return post;
     }
 }

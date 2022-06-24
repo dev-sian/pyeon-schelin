@@ -44,11 +44,13 @@ public class PostFacade {
     }
 
     public void create(PostCreateDTO postCreateDTO){
-        PostType postType = postCreateDTO.getPostType();
+        var post = postCreateDTO.toPost();
+
+        PostType postType = post.getPostType();
 
         PostBO postBO = getPostBO(postType);
 
-        postBO.create(postCreateDTO);
+        postBO.create(post);
     }
 
     public void update(Integer postId, PostUpdateDTO postUpdateDTO){

@@ -18,9 +18,8 @@ public abstract class PostBO {
     public abstract List<PostReadDTO> getList(List<Post> posts);
 
     public abstract PostReadDTO get(Post post);
-    public void create(PostCreateDTO postCreateDTO){
-        var post = postCreateDTO.toPost();
 
+    public void create(Post post){
         postDAO.insertPost(post);
     }
 
