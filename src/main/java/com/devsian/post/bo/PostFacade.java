@@ -1,5 +1,6 @@
 package com.devsian.post.bo;
 
+import com.devsian.common.pagination.Pagination;
 import com.devsian.post.PostType;
 import com.devsian.post.dao.PostDAO;
 import com.devsian.post.dto.PostCreateDTO;
@@ -9,6 +10,7 @@ import com.devsian.post.entity.Post;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -20,8 +22,12 @@ public class PostFacade {
     private final GeneralPostBO generalPostBO;
     private final ReviewPostBO reviewPostBO;
 
-    public List<PostReadDTO> getList(Integer boardId){
-        var posts = postDAO.selectAllPosts(boardId);
+    public Pagination<PostReadDTO> getList(Integer boardId, Integer page, Integer listSizePerPage){
+        Pagination<PostReadDTO> postPagination = new Pagination<>();
+
+        Integer offset = postPagination.calcOffset(page, listSizePerPage);
+
+        var posts = postDAO.selectAllPosts(boardId, listSizePerPage, offset);
 
         Post post = posts.stream()
                 .findAny()
@@ -29,7 +35,12 @@ public class PostFacade {
 
         PostBO postBO = getPostBO(post);
 
-        return postBO.getList(posts);
+        List<PostReadDTO> list = postBO.getList(posts);
+
+        postPagination.setList(list);
+        postPagination.setTotalListSize(postDAO.selectCount(boardId));
+
+        return postPagination;
     }
 
     public PostReadDTO get(Integer postId){

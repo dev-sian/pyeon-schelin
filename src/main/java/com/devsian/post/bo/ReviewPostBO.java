@@ -1,11 +1,11 @@
 package com.devsian.post.bo;
 
+import com.devsian.common.pagination.Pagination;
 import com.devsian.post.dao.PostDAO;
 import com.devsian.post.dto.*;
 import com.devsian.post.entity.Post;
 import com.devsian.post.entity.ReviewInfo;
 import com.devsian.post.entity.ReviewPost;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,15 +24,17 @@ public class ReviewPostBO extends PostBO {
     @Override
     public List<PostReadDTO> getList(List<Post> posts) {
 
-        var reviewInfos = postDAO.selectAllReviewInfo();
+        List<Integer> idList = posts.stream()
+                .map(post -> post.getId())
+                .collect(Collectors.toList());
+
+        var reviewInfos = postDAO.selectReviewInfoList(idList);
 
         var postIdToReviewInfo = reviewInfos.stream()
                 .collect(Collectors.toMap(ReviewInfo::getPostId, Function.identity()));
 
         return posts.stream()
-                .map(post ->{
-                    return new ReviewPostReadDTO(post, postIdToReviewInfo.get(post.getId()));
-                })
+                .map(post -> new ReviewPostReadDTO(post, postIdToReviewInfo.get(post.getId())))
                 .collect(Collectors.toList());
     }
 

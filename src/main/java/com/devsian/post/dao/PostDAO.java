@@ -8,17 +8,19 @@ import java.util.List;
 
 @Mapper
 public interface PostDAO {
-    @Select("SELECT * FROM post WHERE boardId=#{boardId}")
-    List<Post> selectAllPosts(Integer boardId);
+    @Select("SELECT * FROM post WHERE boardId=#{boardId} LIMIT #{offset}, #{limit}")
+    List<Post> selectAllPosts(Integer boardId, Integer limit, Integer offset);
 
     @Select("SELECT * FROM post WHERE id=#{postId}")
     Post selectPost(Integer postId);
 
-    @Select("SELECT * FROM reviewInfo")
-    List<ReviewInfo> selectAllReviewInfo();
+    List<ReviewInfo> selectReviewInfoList(List<Integer> idList);
 
     @Select("SELECT * FROM reviewInfo WHERE postId=#{postId}")
     ReviewInfo selectReviewInfo(Integer postId);
+
+    @Select("SELECT COUNT(*) FROM post WHERE boardId=#{boardId}")
+    Integer selectCount(Integer boardId);
 
     @Insert("INSERT INTO post(title, content, boardId, postType, writerId) VALUES(#{title}, #{content}, #{boardId}, #{postType}, #{writerId})")
     @Options(useGeneratedKeys=true, keyProperty="id")
