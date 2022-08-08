@@ -6,6 +6,7 @@ import com.devsian.user.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.mindrot.jbcrypt.BCrypt;
 
 @Getter
 @Setter

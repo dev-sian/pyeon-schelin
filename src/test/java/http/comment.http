@@ -8,11 +8,11 @@ Content-Type: application/json
 {
   "userId": 1,
   "postId": 1,
-  "content": "후속제품은 출시되나요??"
+  "content": "후속제품은 출시되나요???"
 }
 
 ### update comment
-PATCH http://localhost:8080/v1.0/comment/3
+PATCH http://localhost:8080/v1.0/comment/9
 Content-Type: application/json
 
 {
@@ -20,4 +20,4 @@ Content-Type: application/json
 }
 
 ### delete comment
-DELETE http://localhost:8080/v1.0/comment/3
+DELETE http://localhost:8080/v1.0/comment/9

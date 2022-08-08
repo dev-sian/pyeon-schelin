@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devsian.user.dao.UserDAO">
+    <select id="selectByUserId" resultType="com.devsian.user.vo.UserVO">
+        select id, userId, name, password, tier from pyeonschelin.user where userId = #{userId}
+    </select>
+
+    <select id="selectByUserIdAndPassword" resultType="com.devsian.user.entity.User">
+        select id, userId, name, password, tier from pyeonschelin.user where userId = #{userId} and password = #{password}
+    </select>
+
+    <insert id="insert" parameterType="com.devsian.user.entity.User">
+        insert into pyeonschelin.user (userId, name, password, tier) values(#{userId}, #{name}, #{password}, ${tier})
+    </insert>
+
+</mapper>
